@@ -12,9 +12,8 @@ public class ProductCategoryModel {
 		
 	}
 	
-	public ProductCategoryModel(int productCategoryId, String categoryName) {
+	public ProductCategoryModel( String categoryName) {
 		
-		this.productCategoryId = productCategoryId;
 		this.categoryName = categoryName;
 	}
 

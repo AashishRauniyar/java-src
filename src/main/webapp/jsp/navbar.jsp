@@ -2,10 +2,22 @@
 <%
 String userName1 = (String) session.getAttribute("userName");
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page import="com.ecom.model.ProductCategoryModel"%>
+<%@ page import="com.ecom.controller.dao.CategoryDao"%>
+<%@ page import="com.ecom.utils.StringUtils"%>
+<%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%
+// Fetch categories from the database or wherever they are stored
+CategoryDao categoryDao = new CategoryDao();
+List<ProductCategoryModel> categories = categoryDao.getAllCategories();
+
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,6 +25,8 @@ String userName1 = (String) session.getAttribute("userName");
 <link href="../styles/output.css" rel="stylesheet">
 </head>
 <body>
+
+
 	<nav class="max-h-[70px]">
 		<div class="flex justify-between mt-2">
 			<div class="ml-5 flex items-center">
@@ -68,8 +82,8 @@ String userName1 = (String) session.getAttribute("userName");
 				</div>
 
 				<%
-} else {
-%>
+				} else {
+				%>
 
 				<div class="flex items-center mr-4">
 					<div class="">
@@ -99,8 +113,8 @@ String userName1 = (String) session.getAttribute("userName");
 				</div>
 
 				<%
-}
-%>
+				}
+				%>
 
 
 				<div class="">
@@ -134,25 +148,41 @@ String userName1 = (String) session.getAttribute("userName");
 						<a href="#"
 							class="my-1 mx-4 text-sm text-gray-700 font-medium hover:text-indigo-500">Contact
 							Us</a>
+						
+						
 						<!-- Categories Dropdown -->
 						<div class="relative inline-block">
 							<button
 								class="dropdown-button my-1 mx-4 text-sm text-gray-700 font-medium hover:text-indigo-500 focus:outline-none">Categories</button>
-							<div
-								class="dropdown-menu absolute hidden z-10 left-0  mt-2 w-40 bg-white shadow-md rounded-md ">
-								<a href="#"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Smartphones
-									& Accessories</a> <a href="#"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Computers
-									& Laptops</a> <a href="#"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
-									Entertainment</a> <a href="#"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Photography
-									& Cameras</a> <a href="#"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wearable
-									Technology</a>
+							<div class="dropdown-menu absolute hidden z-10 left-0  mt-2 w-40 bg-white shadow-md rounded-md">
+								<!-- Iterate over categories and dynamically generate dropdown items -->
+								
+									
+									<%
+								for(ProductCategoryModel pm: categories){
+								%>
+									
+										 
+										<a href="#"
+										class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+										
+										<%out.println(pm.getCategoryName());%>
+										</a>
+									
+									<%
+								}
+									%>
+									
+								<ul>
+								
+								
+								</ul>
+								
+
 							</div>
 						</div>
+
+
 					</div>
 					<!-- Mobile Menu Button (Hidden on desktop) -->
 					<div class="md:hidden">
@@ -172,6 +202,7 @@ String userName1 = (String) session.getAttribute("userName");
 	</nav>
 
 </body>
+
 <script>
 	// Get the categories button and dropdown menu
 	var categoriesButton = document.querySelector('.dropdown-button');

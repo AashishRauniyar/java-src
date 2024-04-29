@@ -15,7 +15,7 @@ import com.ecom.utils.StringUtils;
 public class DatabaseController {
     public static Connection getConn() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        String url = ("jdbc:mysql://localhost:3306/gadget");
+        String url = ("jdbc:mysql://localhost:3306/kyube");
         String username = "root";
         String password = "";
         System.out.println("Connected to database");

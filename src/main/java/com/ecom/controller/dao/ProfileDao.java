@@ -68,7 +68,7 @@ public class ProfileDao {
 	                    userId = generatedKeys.getInt(1);
 	                }
 	            }
-	            System.out.println(userId);
+	            ;
 	            userStatement.close();
 	            return userId;
 	            

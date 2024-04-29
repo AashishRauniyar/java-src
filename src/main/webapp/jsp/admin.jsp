@@ -158,6 +158,7 @@
                 <!-- Add more rows here -->
             </tbody>
         </table>
+        <button > <a href="./productCategory.jsp">Add Category </button></a> 
     </div>
 
 </body>

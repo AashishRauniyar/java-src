@@ -35,5 +35,13 @@ public class QueryUtils {
 	public static final String UPDATE_ADDRESS_DETAILS = "UPDATE Address SET city = ?, province = ?, "
 	        + "country = ?, postalCode = ? WHERE userId = ?";
 
+	
+	
+	
+	
+	//product category
+	
+	public static final String ADD_CATEGORY = "INSERT INTO productCategory (categoryName)  values (?)";
+    public static final String GET_ALL_CATEGORIES = "SELECT categoryName from productCategory";
     
 }

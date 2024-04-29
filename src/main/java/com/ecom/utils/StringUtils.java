@@ -52,4 +52,10 @@ public class StringUtils {
  	public static final String LOGIN_SERVLET = "/loginServlet";
  	// End Servlet Route
  	
+ 	
+ 	
+ 	//productCategory
+ 	
+ 	public static final String SUCCESS_ADD_CATEGORY = "Category added Successfully Registered!";
+ 	public static final String ADD_CATEGORY_ERROR_MESSAGE = "category cannot be added";
 }
